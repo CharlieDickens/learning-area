@@ -6,6 +6,8 @@
 </head>
 <body>
 
+  
+
   <script>
     let x = 1;
 
@@ -22,6 +24,15 @@
       document.body.appendChild(para);
       para.textContent = 'Value: ' + value;
     }
+
+    let ask = (question, yes, no) => confirm(question) ? yes() : no();
+
+    ask(
+    'Do you agree?',
+    () => document.write('You agreed'),
+    () => document.write('You declined'),
+    );
+
   </script>
 </body>
 </html>

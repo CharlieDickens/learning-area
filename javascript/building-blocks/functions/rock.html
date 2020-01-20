@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+</head>
+<body>
+
+  <input class="yourMove" type="text" onchange="theGame();">
+  <button class="playButton" onclick="theGame();">Let's Play!</button>
+  <br>
+  <div id="resultDiv">
+    <p id="theResult">
+      
+    </p>
+  </div>
+
+  <script>
+
+    function theGame(){
+            const playersMove = document.querySelector('.yourMove').value.toLowerCase();            
+            const computersMove = computerPlay();
+            let result = "";    
+
+            function computerPlay(){              
+              const picker = Math.random() * 10;
+
+              if (picker <= 3) return "rock";
+              else if (picker > 3 && picker <= 6) return "paper";
+              else return "scissors";              
+            }
+
+            const whoWon = letsplay(playersMove, computersMove);
+            
+
+            function letsplay(playersMove, computersMove) {
+              switch(playersMove) {
+                case "rock":
+                  if (computersMove == "rock") {
+                    result = "It's a tie.";
+                    //document.write("It's a tie.");                  
+                  }
+                  else if (computersMove == "scissors") {
+                    result = "You won!";
+                    //document.write("You won!");                  
+                  }
+                  else if (computersMove == "paper") {
+                    result = "You lose :(";
+                    //document.write("You lose!");                  
+                  }
+                  break;                  
+                  case "paper":
+                  if (computersMove == "paper") {
+                    result = "It's a tie.";
+                    //document.write("It's a tie.");                  
+                  }
+                  else if (computersMove == "rock") {
+                    result = "You won!";
+                    //document.write("You won!");                  
+                  }
+                  else if (computersMove == "scissors") {
+                    result = "You lose :(";
+                    //document.write("You lose!");                  
+                  }
+                  break;
+                  case "scissors":
+                  if (computersMove == "scissors") {
+                    result = "It's a tie.";
+                    //document.write("It's a tie.");                  
+                  }
+                  else if (computersMove == "paper") {
+                    result = "You won!";
+                    //document.write("You won!");                  
+                  }
+                  else if (computersMove == "rock") {
+                    result = "You lose :(";
+                    //document.write("You lose!");                  
+                  }
+                  break;
+                  default:
+                    result = "Please enter either rock, paper or scissors. Or check your spelling.";
+              }
+
+              //document.write ("Computer's move is: " + computersMove + ". ");
+              return result;
+              
+            } //end letsPlay()
+
+            document.querySelector('#theResult').textContent = result;
+            document.querySelector('.playButton').textContent = "Play again";
+            
+    } // end theGame()       
+  </script>
+
+
+</body>
+</html>
